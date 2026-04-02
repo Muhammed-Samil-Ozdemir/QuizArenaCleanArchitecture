@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Options\" />
       <Folder Include="UserAnswers\" />
     </ItemGroup>
 

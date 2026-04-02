@@ -13,4 +13,9 @@ public sealed class RoomParticipant : BaseEntity
     public User User { get; set; } = default!;
     
     public DateTime JoinedAt { get; set; }
+
+    public RoomParticipant()
+    {
+        JoinedAt = DateTime.UtcNow;
+    }
 }

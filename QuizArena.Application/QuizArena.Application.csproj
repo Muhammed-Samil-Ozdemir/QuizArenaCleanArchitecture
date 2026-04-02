@@ -10,7 +10,6 @@
       <Folder Include="Options\" />
       <Folder Include="Questions\" />
       <Folder Include="RoomParticipants\" />
-      <Folder Include="Rooms\" />
       <Folder Include="UserAnswers\" />
     </ItemGroup>
 

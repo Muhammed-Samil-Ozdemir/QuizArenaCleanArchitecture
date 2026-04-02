@@ -11,7 +11,7 @@ internal sealed class GetUserByEmailQueryHandler(
 {
     public async Task<Result<GetUserByEmailQueryResponse>> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
     {
-        var user = await repository.GetByEmail(request.Email, cancellationToken);
+        var user = await repository.GetByEmailAsync(request.Email, cancellationToken);
         if (user is null)
             return Result<GetUserByEmailQueryResponse>.NotFound("User not found.");
         

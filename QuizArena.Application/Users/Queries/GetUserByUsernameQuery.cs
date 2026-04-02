@@ -11,7 +11,7 @@ internal sealed class GetUserByUsernameQueryHandler(
 {
     public async Task<Result<GetUserByUsernameQueryResponse>> Handle(GetUserByUsernameQuery request, CancellationToken cancellationToken)
     {
-        var user = await repository.GetByUsername(request.Username, cancellationToken);
+        var user = await repository.GetByUsernameAsync(request.Username, cancellationToken);
         if (user is null)
             return Result<GetUserByUsernameQueryResponse>.NotFound("User not found.");
         

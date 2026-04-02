@@ -25,6 +25,9 @@ public class Result
 
     public static Result NotFound(params string[] errorMessages)
         => new(false, ResultStatus.NotFound, errorMessages.ToList());
+    
+    public static Result BadRequest(params string[] errorMessages)
+        => new(false, ResultStatus.BadRequest, errorMessages.ToList());
 
     public static Result Unauthorized(params string[] errorMessages)
         => new(false, ResultStatus.Unauthorized, errorMessages.ToList());
@@ -59,6 +62,9 @@ public sealed class Result<T> : Result
 
     public new static Result<T> NotFound(params string[] errorMessages)
         => new(false, ResultStatus.NotFound, errorMessages.ToList(), default);
+    
+    public new static Result<T> BadRequest(params string[] errorMessages)
+        => new(false, ResultStatus.BadRequest, errorMessages.ToList(), default);
 
     public new static Result<T> Unauthorized(params string[] errorMessages)
         => new(false, ResultStatus.Unauthorized, errorMessages.ToList(), default);

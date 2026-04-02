@@ -4,19 +4,19 @@ using QuizArena.Domain.Users;
 
 namespace QuizArena.Application.Users.Queries;
 
-public sealed record GetUserByUsernameQuery(string Username) : IQuery<GetUserByUsernameQueryResponse>;
+public sealed record GetUserByUsernameQuery(string Username) : IQuery<GetUserByUsernameResponse>;
 
 internal sealed class GetUserByUsernameQueryHandler(
-    IUserRepository repository) : IQueryHandler<GetUserByUsernameQuery, GetUserByUsernameQueryResponse>
+    IUserRepository repository) : IQueryHandler<GetUserByUsernameQuery, GetUserByUsernameResponse>
 {
-    public async Task<Result<GetUserByUsernameQueryResponse>> Handle(GetUserByUsernameQuery request, CancellationToken cancellationToken)
+    public async Task<Result<GetUserByUsernameResponse>> Handle(GetUserByUsernameQuery request, CancellationToken cancellationToken)
     {
         var user = await repository.GetByUsernameAsync(request.Username, cancellationToken);
         if (user is null)
-            return Result<GetUserByUsernameQueryResponse>.NotFound("User not found.");
+            return Result<GetUserByUsernameResponse>.NotFound("User not found.");
         
-        return Result<GetUserByUsernameQueryResponse>.Success(new GetUserByUsernameQueryResponse(user.Id, user.Username, user.Email));
+        return Result<GetUserByUsernameResponse>.Success(new GetUserByUsernameResponse(user.Id, user.Username, user.Email));
     }
 }
 
-public sealed record GetUserByUsernameQueryResponse(Guid Id, string Username, string Email);
+public sealed record GetUserByUsernameResponse(Guid Id, string Username, string Email);

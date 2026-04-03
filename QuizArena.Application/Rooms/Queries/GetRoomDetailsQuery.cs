@@ -24,7 +24,7 @@ internal sealed class GetRoomDetailsQueryHandler(
                 new QuestionDto(
                     q.Id,
                     q.Text,
-                    q.Options.Select(o => 
+                    q.QuestionOptions.Select(o => 
                         new OptionDto(
                             o.Id,
                             o.Text,

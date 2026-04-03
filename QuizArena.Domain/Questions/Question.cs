@@ -1,5 +1,5 @@
 using QuizArena.Domain.Abstractions;
-using QuizArena.Domain.Options;
+using QuizArena.Domain.QuestionOptions;
 using QuizArena.Domain.Rooms;
 using QuizArena.Domain.UserAnswers;
 
@@ -12,6 +12,6 @@ public sealed class Question : BaseEntity
     public Guid RoomId { get; set; }
     public Room Room { get; set; } = default!;
     
-    public ICollection<Option> Options { get; set; } = [];
+    public ICollection<QuestionOption> QuestionOptions { get; set; } = [];
     public ICollection<UserAnswer> UserAnswers { get; set; } = [];
 }

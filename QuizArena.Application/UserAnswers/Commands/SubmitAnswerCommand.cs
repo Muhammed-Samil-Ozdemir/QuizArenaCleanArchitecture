@@ -38,7 +38,7 @@ internal sealed class SubmitAnswerCommandHandler(
         if (question is null)
             return Result<SubmitAnswerResponse>.NotFound("Question not found.");
 
-        var selectedOption = question.Options.FirstOrDefault(x => x.Id == request.SelectedOptionId);
+        var selectedOption = question.QuestionOptions.FirstOrDefault(x => x.Id == request.SelectedOptionId);
         if (selectedOption is null)
             return Result<SubmitAnswerResponse>.BadRequest("Selected option is invalid.");
 
@@ -47,7 +47,8 @@ internal sealed class SubmitAnswerCommandHandler(
             UserId = request.UserId,
             QuestionId = request.QuestionId,
             SelectedOptionId = request.SelectedOptionId,
-            IsCorrect = selectedOption.IsCorrect
+            IsCorrect = selectedOption.IsCorrect,
+            AnsweredAt = DateTime.UtcNow
         };
 
         await answerRepository.AddAsync(answer, cancellationToken);

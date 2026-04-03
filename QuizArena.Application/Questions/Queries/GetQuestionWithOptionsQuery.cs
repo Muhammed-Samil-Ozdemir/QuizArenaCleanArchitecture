@@ -18,7 +18,7 @@ internal sealed class GetQuestionWithOptionsQueryHandler(
         var response = new GetQuestionWithOptionsResponse(
             question.Id,
             question.Text,
-            question.Options.Select(o => new OptionDto(o.Id, o.Text, o.IsCorrect)).ToList());
+            question.QuestionOptions.Select(o => new QuestionOptionDto(o.Id, o.Text, o.IsCorrect)).ToList());
 
         return Result<GetQuestionWithOptionsResponse>.Success(response);
     }
@@ -27,9 +27,9 @@ internal sealed class GetQuestionWithOptionsQueryHandler(
 public sealed record GetQuestionWithOptionsResponse(
     Guid Id,
     string Text,
-    List<OptionDto> Options);
+    List<QuestionOptionDto> Options);
 
-public sealed record OptionDto(
+public sealed record QuestionOptionDto(
     Guid Id,
     string Text,
     bool IsCorrect);

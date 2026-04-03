@@ -1,9 +1,9 @@
 using QuizArena.Domain.Abstractions;
 using QuizArena.Domain.Questions;
 
-namespace QuizArena.Domain.Options;
+namespace QuizArena.Domain.QuestionOptions;
 
-public sealed class Option : BaseEntity
+public sealed class QuestionOption : BaseEntity
 {
     public string Text { get; set; } = default!;
     public bool IsCorrect { get; set; }

@@ -1,5 +1,5 @@
 using QuizArena.Domain.Abstractions;
-using QuizArena.Domain.Options;
+using QuizArena.Domain.QuestionOptions;
 using QuizArena.Domain.Questions;
 using QuizArena.Domain.Users;
 
@@ -14,7 +14,7 @@ public sealed class UserAnswer : BaseEntity
     public Question Question { get; set; } = default!;
     
     public Guid SelectedOptionId { get; set; }
-    public Option SelectedOption { get; set; } = default!;
+    public QuestionOption SelectedQuestionOption { get; set; } = default!;
     
     public bool IsCorrect { get; set; }
     

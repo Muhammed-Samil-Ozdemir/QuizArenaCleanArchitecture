@@ -6,14 +6,14 @@ using QuizArena.Domain.QuestionOptions;
 
 namespace QuizArena.Application.QuestionOptions.Commands;
 
-public sealed record UpdateQuesitonOptionCommand(Guid Id,
+public sealed record UpdateQuestionOptionCommand(Guid Id,
     Guid QuestionId,
     string Text,
     bool IsCorrect) : ICommand<UpdateQuestionOptionResponse>;
 
-public sealed class UpdateQuesitonOptionCommandValidator : AbstractValidator<UpdateQuesitonOptionCommand>
+public sealed class UpdateQuestionOptionCommandValidator : AbstractValidator<UpdateQuestionOptionCommand>
 {
-    public UpdateQuesitonOptionCommandValidator()
+    public UpdateQuestionOptionCommandValidator()
     {
         RuleFor(x => x.Id)
             .NotEqual(Guid.Empty).WithMessage("Id cannot be empty.");
@@ -24,11 +24,11 @@ public sealed class UpdateQuesitonOptionCommandValidator : AbstractValidator<Upd
     }
 }
 
-internal sealed class UpdateQuesitonOptionCommandHandler(
+internal sealed class UpdateQuestionOptionCommandHandler(
     IQuestionOptionRepository repository,
-    IUnitOfWork unitOfWork) : ICommandHandler<UpdateQuesitonOptionCommand, UpdateQuestionOptionResponse>
+    IUnitOfWork unitOfWork) : ICommandHandler<UpdateQuestionOptionCommand, UpdateQuestionOptionResponse>
 {
-    public async Task<Result<UpdateQuestionOptionResponse>> Handle(UpdateQuesitonOptionCommand request, CancellationToken cancellationToken)
+    public async Task<Result<UpdateQuestionOptionResponse>> Handle(UpdateQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var questionOption = await repository.GetByIdAsync(request.Id, cancellationToken);
         if (questionOption is null)

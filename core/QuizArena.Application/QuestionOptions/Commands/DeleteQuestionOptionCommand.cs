@@ -6,7 +6,7 @@ using QuizArena.Domain.QuestionOptions;
 
 namespace QuizArena.Application.QuestionOptions.Commands;
 
-public sealed record DeleteQuestionOptionCommand(Guid Id) : ICommand;
+public sealed record DeleteQuestionOptionCommand(Guid Id) : ICommand<DeleteQuestionOptionResponse>;
 
 public sealed class DeleteQuestionOptionCommandValidator : AbstractValidator<DeleteQuestionOptionCommand>
 {
@@ -19,17 +19,19 @@ public sealed class DeleteQuestionOptionCommandValidator : AbstractValidator<Del
 
 internal sealed class DeleteOptionCommandHandler(
     IQuestionOptionRepository repository,
-    IUnitOfWork unitOfWork) : ICommandHandler<DeleteQuestionOptionCommand>
+    IUnitOfWork unitOfWork) : ICommandHandler<DeleteQuestionOptionCommand, DeleteQuestionOptionResponse>
 {
-    public async Task<Result> Handle(DeleteQuestionOptionCommand request, CancellationToken cancellationToken)
+    public async Task<Result<DeleteQuestionOptionResponse>> Handle(DeleteQuestionOptionCommand request, CancellationToken cancellationToken)
     {
         var questionOption = await repository.GetByIdAsync(request.Id, cancellationToken);
         if (questionOption is null)
-            return Result.NotFound("Option not found.");
+            return Result<DeleteQuestionOptionResponse>.NotFound("Option not found.");
         
         repository.Remove(questionOption);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return Result.Success();
+        return Result<DeleteQuestionOptionResponse>.Success(new DeleteQuestionOptionResponse());
     }
 }
+
+public sealed record DeleteQuestionOptionResponse();

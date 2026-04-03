@@ -6,7 +6,7 @@ using QuizArena.Domain.Users;
 
 namespace QuizArena.Application.Users.Commands;
 
-public sealed record DeleteUserCommand(Guid Id) : ICommand;
+public sealed record DeleteUserCommand(Guid Id) : ICommand<DeleteUserResponse>;
 
 public sealed class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
 {
@@ -19,17 +19,19 @@ public sealed class DeleteUserCommandValidator : AbstractValidator<DeleteUserCom
 
 internal sealed class DeleteUserCommandHandler(
     IUserRepository repository,
-    IUnitOfWork unitOfWork) : ICommandHandler<DeleteUserCommand>
+    IUnitOfWork unitOfWork) : ICommandHandler<DeleteUserCommand, DeleteUserResponse>
 {
-    public async Task<Result> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+    public async Task<Result<DeleteUserResponse>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
         var user = await repository.GetByIdAsync(request.Id, cancellationToken);
         if (user is null)
-            return Result.NotFound("User not found.");
+            return Result<DeleteUserResponse>.NotFound("User not found.");
         
         repository.Remove(user);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return Result.Success();
+        return Result<DeleteUserResponse>.Success(new DeleteUserResponse());
     }
 }
+
+public sealed record DeleteUserResponse();

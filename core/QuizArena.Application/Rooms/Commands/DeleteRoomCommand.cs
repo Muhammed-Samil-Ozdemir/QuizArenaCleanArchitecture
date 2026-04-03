@@ -6,7 +6,7 @@ using QuizArena.Domain.Rooms;
 
 namespace QuizArena.Application.Rooms.Commands;
 
-public sealed record DeleteRoomCommand(Guid Id) : ICommand;
+public sealed record DeleteRoomCommand(Guid Id) : ICommand<DeleteRoomResponse>;
 
 public sealed class DeleteRoomCommandValidator : AbstractValidator<DeleteRoomCommand>
 {
@@ -19,17 +19,19 @@ public sealed class DeleteRoomCommandValidator : AbstractValidator<DeleteRoomCom
 
 internal sealed class DeleteRoomCommandHandler(
     IRoomRepository repository,
-    IUnitOfWork unitOfWork) : ICommandHandler<DeleteRoomCommand>
+    IUnitOfWork unitOfWork) : ICommandHandler<DeleteRoomCommand, DeleteRoomResponse>
 {
-    public async Task<Result> Handle(DeleteRoomCommand request, CancellationToken cancellationToken)
+    public async Task<Result<DeleteRoomResponse>> Handle(DeleteRoomCommand request, CancellationToken cancellationToken)
     {
         var room = await repository.GetByIdAsync(request.Id, cancellationToken);
         if (room is null)
-            return Result.NotFound("Room not found.");
+            return Result<DeleteRoomResponse>.NotFound("Room not found.");
         
         repository.Remove(room);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return Result.Success();
+        return Result<DeleteRoomResponse>.Success(new DeleteRoomResponse());
     }
 }
+
+public sealed record DeleteRoomResponse();

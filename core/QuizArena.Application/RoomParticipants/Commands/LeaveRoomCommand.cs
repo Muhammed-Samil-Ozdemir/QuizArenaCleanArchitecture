@@ -6,7 +6,7 @@ using QuizArena.Domain.RoomParticipants;
 
 namespace QuizArena.Application.RoomParticipants.Commands;
 
-public sealed record LeaveRoomCommand(Guid RoomId, Guid UserId) : ICommand;
+public sealed record LeaveRoomCommand(Guid RoomId, Guid UserId) : ICommand<LeaveRoomResponse>;
 
 public sealed class LeaveRoomCommandValidator : AbstractValidator<LeaveRoomCommand>
 {
@@ -22,17 +22,19 @@ public sealed class LeaveRoomCommandValidator : AbstractValidator<LeaveRoomComma
 
 internal sealed class LeaveRoomCommandHandler(
     IRoomParticipantRepository repository,
-    IUnitOfWork unitOfWork) : ICommandHandler<LeaveRoomCommand>
+    IUnitOfWork unitOfWork) : ICommandHandler<LeaveRoomCommand, LeaveRoomResponse>
 {
-    public async Task<Result> Handle(LeaveRoomCommand request, CancellationToken cancellationToken)
+    public async Task<Result<LeaveRoomResponse>> Handle(LeaveRoomCommand request, CancellationToken cancellationToken)
     {
         var participant = await repository.GetByRoomAndUserAsync(request.RoomId, request.UserId, cancellationToken);
         if (participant is null)
-            return Result.NotFound("User is not in the room.");
+            return Result<LeaveRoomResponse>.NotFound("User is not in the room.");
         
         repository.Remove(participant);
         await unitOfWork.SaveChangesAsync(cancellationToken);
         
-        return Result.Success();
+        return Result<LeaveRoomResponse>.Success(new LeaveRoomResponse());
     }
 }
+
+public sealed record LeaveRoomResponse();

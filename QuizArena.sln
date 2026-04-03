@@ -1,28 +1,51 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A4246409-2021-4F9A-A20C-A088727AE47C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Domain", "QuizArena.Domain\QuizArena.Domain.csproj", "{B6BE681D-10DA-4556-A15F-672DF769C3C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Domain", "core\QuizArena.Domain\QuizArena.Domain.csproj", "{D69D44FF-0565-4B69-BC3F-8087B00E1654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Application", "QuizArena.Application\QuizArena.Application.csproj", "{B0F5446E-E244-45A9-960B-46D5214504A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Application", "core\QuizArena.Application\QuizArena.Application.csproj", "{B60ABFEA-46AC-4F7D-A11C-CD493856580B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6BE681D-10DA-4556-A15F-672DF769C3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6BE681D-10DA-4556-A15F-672DF769C3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6BE681D-10DA-4556-A15F-672DF769C3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6BE681D-10DA-4556-A15F-672DF769C3C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0F5446E-E244-45A9-960B-46D5214504A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0F5446E-E244-45A9-960B-46D5214504A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0F5446E-E244-45A9-960B-46D5214504A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0F5446E-E244-45A9-960B-46D5214504A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|x64.Build.0 = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Debug|x86.Build.0 = Debug|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|x64.ActiveCfg = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|x64.Build.0 = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|x86.ActiveCfg = Release|Any CPU
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654}.Release|x86.Build.0 = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|x64.Build.0 = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|x86.ActiveCfg = Release|Any CPU
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B6BE681D-10DA-4556-A15F-672DF769C3C0} = {A4246409-2021-4F9A-A20C-A088727AE47C}
-		{B0F5446E-E244-45A9-960B-46D5214504A7} = {A4246409-2021-4F9A-A20C-A088727AE47C}
+		{D69D44FF-0565-4B69-BC3F-8087B00E1654} = {FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}
+		{B60ABFEA-46AC-4F7D-A11C-CD493856580B} = {FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}
 	EndGlobalSection
 EndGlobal

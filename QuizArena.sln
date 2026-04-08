@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "src\Core", "{FBF56CC3-7AE6-AD2D-3F14-7F97FD322CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Domain", "core\QuizArena.Domain\QuizArena.Domain.csproj", "{D69D44FF-0565-4B69-BC3F-8087B00E1654}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Domain", "src\Core\QuizArena.Domain\QuizArena.Domain.csproj", "{D69D44FF-0565-4B69-BC3F-8087B00E1654}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Application", "core\QuizArena.Application\QuizArena.Application.csproj", "{B60ABFEA-46AC-4F7D-A11C-CD493856580B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizArena.Application", "src\Core\QuizArena.Application\QuizArena.Application.csproj", "{B60ABFEA-46AC-4F7D-A11C-CD493856580B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,5 @@
 using QuizArena.Domain.Abstractions;
+using QuizArena.Domain.Repositories;
 
 namespace QuizArena.Domain.Questions;
 

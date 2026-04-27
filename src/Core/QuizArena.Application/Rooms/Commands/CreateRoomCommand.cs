@@ -3,6 +3,7 @@ using QuizArena.Application.Abstractions;
 using QuizArena.Application.Common.Results;
 using QuizArena.Domain.Abstractions;
 using QuizArena.Domain.Rooms;
+using QuizArena.Domain.UnitOfWorks;
 
 namespace QuizArena.Application.Rooms.Commands;
 

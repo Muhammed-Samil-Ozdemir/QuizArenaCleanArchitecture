@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace QuizArena.Domain.Abstractions;
+namespace QuizArena.Domain.Repositories;
 
 public interface IGenericRepository<T>
 {
@@ -18,7 +18,7 @@ public interface IGenericRepository<T>
     Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
     IQueryable<T> GetWhere(Expression<Func<T, bool>> expression);
 
-    Task<T?> GetByIdAsync(Guid id,  CancellationToken cancellationToken);
+    ValueTask<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
     Task<T?> GetFirstByExpressionAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken);
     Task<T?> GetFirst(CancellationToken cancellationToken);
 

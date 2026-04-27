@@ -6,4 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\QuizArena.Persistance\QuizArena.Persistance.csproj" />
+      <ProjectReference Include="..\src\Core\QuizArena.Application\QuizArena.Application.csproj" />
+    </ItemGroup>
+
 </Project>

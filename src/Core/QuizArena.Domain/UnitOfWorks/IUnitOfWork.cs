@@ -1,4 +1,4 @@
-namespace QuizArena.Domain.Abstractions;
+namespace QuizArena.Domain.UnitOfWorks;
 
 public interface IUnitOfWork
 {

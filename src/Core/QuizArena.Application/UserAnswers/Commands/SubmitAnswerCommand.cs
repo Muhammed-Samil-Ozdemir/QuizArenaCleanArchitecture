@@ -1,8 +1,8 @@
 using FluentValidation;
 using QuizArena.Application.Abstractions;
 using QuizArena.Application.Common.Results;
-using QuizArena.Domain.Abstractions;
 using QuizArena.Domain.Questions;
+using QuizArena.Domain.UnitOfWorks;
 using QuizArena.Domain.UserAnswers;
 
 namespace QuizArena.Application.UserAnswers.Commands;

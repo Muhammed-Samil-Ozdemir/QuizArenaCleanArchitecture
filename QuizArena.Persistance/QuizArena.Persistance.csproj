@@ -20,13 +20,4 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="QuestionOptions\" />
-      <Folder Include="Questions\" />
-      <Folder Include="RoomParticipants\" />
-      <Folder Include="Rooms\" />
-      <Folder Include="UserAnswers\" />
-      <Folder Include="Users\" />
-    </ItemGroup>
-
 </Project>

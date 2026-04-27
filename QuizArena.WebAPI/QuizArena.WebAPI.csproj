@@ -7,8 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\QuizArena.Infrasturcture\QuizArena.Infrasturcture.csproj" />
       <ProjectReference Include="..\QuizArena.Persistance\QuizArena.Persistance.csproj" />
+      <ProjectReference Include="..\QuizArena.Presentation\QuizArena.Presentation.csproj" />
       <ProjectReference Include="..\src\Core\QuizArena.Application\QuizArena.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.14">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
     </ItemGroup>
 
 </Project>

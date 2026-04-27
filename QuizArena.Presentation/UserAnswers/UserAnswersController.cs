@@ -6,11 +6,11 @@ using QuizArena.Presentation.Abstractions;
 
 namespace QuizArena.Presentation.UserAnswers;
 
-public class UserAnswersController(IMediator mediator) : ApiController(mediator)
+public sealed class UserAnswersController(IMediator mediator) : ApiController(mediator)
 {
     [HttpGet("by-user/{userId:guid}")]
-    public async Task<IActionResult> GetByUserId(GetUserAnswersByUserQuery request,
-        CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
+    public async Task<IActionResult> GetByUserId(Guid userId, CancellationToken cancellationToken) =>
+        ToActionResult(await Mediator.Send(new GetUserAnswersByUserQuery(userId), cancellationToken));
     
     [HttpPost]
     public async Task<IActionResult> CreateAsync(SubmitAnswerCommand request,

@@ -6,15 +6,15 @@ using QuizArena.Presentation.Abstractions;
 
 namespace QuizArena.Presentation.Rooms;
 
-public class RoomsController(IMediator mediator) : ApiController(mediator)
+public sealed class RoomsController(IMediator mediator) : ApiController(mediator)
 {
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetDetails(GetRoomDetailsQuery request, CancellationToken cancellationToken) =>
-        ToActionResult(await Mediator.Send(request, cancellationToken));
+    public async Task<IActionResult> GetDetails(Guid id, CancellationToken cancellationToken) =>
+        ToActionResult(await Mediator.Send(new GetRoomDetailsQuery(id), cancellationToken));
     
     [HttpGet("by-owner/{ownerId:guid}")]
-    public async Task<IActionResult> GetAllByOwnerId(GetRoomsByOwnerQuery request, CancellationToken cancellationToken) =>
-        ToActionResult(await Mediator.Send(request, cancellationToken));
+    public async Task<IActionResult> GetAllByOwnerId(Guid ownerId, CancellationToken cancellationToken) =>
+        ToActionResult(await Mediator.Send(new GetRoomsByOwnerQuery(ownerId), cancellationToken));
     
     [HttpPost]
     public async Task<IActionResult> CreateAsync(CreateRoomCommand request, CancellationToken cancellationToken) =>
@@ -25,6 +25,6 @@ public class RoomsController(IMediator mediator) : ApiController(mediator)
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteAsync(DeleteRoomCommand request, CancellationToken cancellationToken) =>
-        ToActionResult(await Mediator.Send(request, cancellationToken));
+    public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken) =>
+        ToActionResult(await Mediator.Send(new DeleteRoomCommand(id), cancellationToken));
 }

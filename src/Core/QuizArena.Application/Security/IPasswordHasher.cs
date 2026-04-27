@@ -1,4 +1,4 @@
-namespace QuizArena.Application.Abstractions;
+namespace QuizArena.Application.Security;
 
 public interface IPasswordHasher
 {

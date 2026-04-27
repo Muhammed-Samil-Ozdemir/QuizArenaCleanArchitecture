@@ -1,6 +1,7 @@
 using FluentValidation;
 using QuizArena.Application.Abstractions;
 using QuizArena.Application.Common.Results;
+using QuizArena.Application.Security;
 using QuizArena.Domain.Abstractions;
 using QuizArena.Domain.UnitOfWorks;
 using QuizArena.Domain.Users;

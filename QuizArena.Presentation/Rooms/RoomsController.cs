@@ -8,11 +8,11 @@ namespace QuizArena.Presentation.Rooms;
 
 public class RoomsController(IMediator mediator) : ApiController(mediator)
 {
-    [HttpGet]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetDetails(GetRoomDetailsQuery request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpGet]
+    [HttpGet("by-owner/{ownerId:guid}")]
     public async Task<IActionResult> GetAllByOwnerId(GetRoomsByOwnerQuery request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
@@ -20,11 +20,11 @@ public class RoomsController(IMediator mediator) : ApiController(mediator)
     public async Task<IActionResult> CreateAsync(CreateRoomCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPut]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateAsync(UpdateRoomCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpDelete]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(DeleteRoomCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
 }

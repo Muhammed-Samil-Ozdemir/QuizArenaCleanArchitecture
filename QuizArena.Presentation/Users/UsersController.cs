@@ -12,15 +12,15 @@ public class UsersController(IMediator mediator) : ApiController(mediator)
     public async Task<IActionResult> GetAll(GetAllUsersQuery request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpGet]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(GetUserByIdQuery request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpGet]
+    [HttpGet("by-username/{username}")]
     public async Task<IActionResult> GetByUsername(GetUserByUsernameQuery request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpGet]
+    [HttpGet("by-email/{email}")]
     public async Task<IActionResult> GetByEmail(GetUserByEmailQuery request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
@@ -28,15 +28,15 @@ public class UsersController(IMediator mediator) : ApiController(mediator)
     public async Task<IActionResult> CreateAsync(CreateUserCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPut]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateAsync(UpdateUserCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpDelete]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(DeleteUserCommand request, CancellationToken cancellationToken) =>
         ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPatch]
+    [HttpPatch("{id:guid}/change-password")]
     public async Task<IActionResult> ChangePasswordAsync(ChangePasswordCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
 }

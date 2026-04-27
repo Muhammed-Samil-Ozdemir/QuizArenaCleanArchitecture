@@ -8,15 +8,15 @@ namespace QuizArena.Presentation.RoomParticipants;
 
 public class RoomParticipantsController(IMediator mediator) : ApiController(mediator)
 {
-    [HttpGet]
+    [HttpGet("by-room/{roomId:guid}")]
     public async Task<IActionResult> GetByRoomIdAsync(GetRoomParticipantsQuery request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPost]
+    [HttpPost("join")]
     public async Task<IActionResult> CreateAsync(JoinRoomCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPost]
+    [HttpDelete("leave")]
     public async Task<IActionResult> LeaveAsync(LeaveRoomCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
 }

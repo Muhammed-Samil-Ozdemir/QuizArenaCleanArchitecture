@@ -8,7 +8,7 @@ namespace QuizArena.Presentation.QuestionOptions;
 
 public sealed class QuestionOptionsController(IMediator mediator) : ApiController(mediator)
 {
-    [HttpGet]
+    [HttpGet("by-question/{questionId:guid}")]
     public async Task<IActionResult> GetByQuestionIdAsync(GetQuestionOptionsByQuestionQuery request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
@@ -16,11 +16,11 @@ public sealed class QuestionOptionsController(IMediator mediator) : ApiControlle
     public async Task<IActionResult> CreateAsync(AddQuestionOptionCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpPut]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateAsync(UpdateQuestionOptionCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
-    [HttpDelete]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(DeleteQuestionOptionCommand request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
 }

@@ -8,7 +8,7 @@ namespace QuizArena.Presentation.UserAnswers;
 
 public class UserAnswersController(IMediator mediator) : ApiController(mediator)
 {
-    [HttpGet]
+    [HttpGet("by-user/{userId:guid}")]
     public async Task<IActionResult> GetByUserId(GetUserAnswersByUserQuery request,
         CancellationToken cancellationToken) => ToActionResult(await Mediator.Send(request, cancellationToken));
     
